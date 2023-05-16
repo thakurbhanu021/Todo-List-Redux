@@ -6,9 +6,9 @@ import { useSelector } from "react-redux";
 function TodoList(props) {
   const todoData = useSelector((state)=> state.todos);
 
- const removeHandler=(id)=>{
-  props.onRemove(id);
- }
+//  const removeHandler=(id)=>{
+//   props.onRemove(id);
+//  }
 //  const strikeHandler=(val,id)=>{
 //   props.onStrike(val,id);
 //  }
@@ -25,7 +25,7 @@ function TodoList(props) {
                 // key={index}
                 key={ListData.id}
                 // remove={() => props.remove(index)}
-               remove={removeHandler}
+              //  remove={removeHandler}
               //  strike={strikeHandler}
                addInputEdit={addInputEditHandler}
               />

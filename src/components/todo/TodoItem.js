@@ -1,7 +1,7 @@
 import { useState } from "react";
 import classes from "./TodoItem.module.css";
 import { useDispatch } from "react-redux";
-import { toggleComplete, deleteTodo } from "../../store/todoSlice";
+import { toggleComplete, deleteTodo , editTodo} from "../../store/todoSlice";
 
 import "../../App.css";
 
@@ -24,7 +24,7 @@ function TodoItem(props) {
     dispatch(toggleComplete({id: props.id , isCompleted: !val}))
   };
   const editHandler = () => {
-    if (props.isCompleted=== true) {
+    if (props.isCompleted === true) {
       return "none";
     } else {
       setEdit(!edit);
@@ -40,9 +40,12 @@ function TodoItem(props) {
     if (input.trim().length === 0) {
       return alert("Please type something to edit the task");
     } else {
-      props.addInputEdit(input, props.id);
+      dispatch(editTodo({id: props.id, des: input}));
       setEdit(false);
-      setInput("");
+      setInput('');
+      // props.addInputEdit(input, props.id);
+      // setEdit(false);
+      // setInput("");
     }
   };
 

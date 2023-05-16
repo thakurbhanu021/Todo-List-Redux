@@ -30,12 +30,21 @@ const todoSlice = createSlice({
         })
         },
         deleteTodo:(state,action)=>{
-            console.log(action.payload.id)
+            // console.log(action.payload.id)
             return state.filter((todo)=> todo.id !== action.payload.id )
         },
+        editTodo: (state,action)=>{
+            // console.log(action.payload.id);
+            // console.log(action.payload.des);
+            state.map((todo)=>{
+                if(todo.id === action.payload.id){
+                    todo.des = action.payload.des;
+                }
+            })
+        }
     }
 })
 
-export const {addTodo,toggleComplete, deleteTodo } = todoSlice.actions;
+export const {addTodo,toggleComplete, deleteTodo, editTodo } = todoSlice.actions;
 
 export default todoSlice.reducer;

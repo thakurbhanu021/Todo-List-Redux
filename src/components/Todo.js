@@ -34,9 +34,9 @@ function Todo() {
   //   newData.splice(index, 1);
   //   return newData
   // })
-  const removeTask = (id) => {
-    setUpdatedTaskData((prev) => prev.filter((data) => data.id !== id));
-  };
+  // const removeTask = (id) => {
+  //   setUpdatedTaskData((prev) => prev.filter((data) => data.id !== id));
+  // };
 
   // const strikeHandler = (val, id) => {
   //   console.log(val, id);
@@ -125,7 +125,7 @@ function Todo() {
         {filteredData.length ? (
           <TodoList
             todoData={filteredData}
-            onRemove={removeTask}
+            // onRemove={removeTask}
             // onStrike={strikeHandler}
             OnAddEditInput={onAddEditInputHandler}
           />
