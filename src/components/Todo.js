@@ -38,22 +38,22 @@ function Todo() {
     setUpdatedTaskData((prev) => prev.filter((data) => data.id !== id));
   };
 
-  const strikeHandler = (val, id) => {
-    console.log(val, id);
-    setUpdatedTaskData((prev) => {
-      const newData = [...prev];
-      // if(newData.find(data=>data.id === id)){}
-      newData.map((item) => {
-        if (item.id === id) {
-          return (item.isCompleted = val);
-        } else {
-          return item;
-        }
-      });
-      console.log(newData);
-      return newData;
-    });
-  };
+  // const strikeHandler = (val, id) => {
+  //   console.log(val, id);
+  //   setUpdatedTaskData((prev) => {
+  //     const newData = [...prev];
+  //     // if(newData.find(data=>data.id === id)){}
+  //     newData.map((item) => {
+  //       if (item.id === id) {
+  //         return (item.isCompleted = val);
+  //       } else {
+  //         return item;
+  //       }
+  //     });
+  //     console.log(newData);
+  //     return newData;
+  //   });
+  // };
   const onAddEditInputHandler = (val, id) => {
     // console.log(val, id);
     setUpdatedTaskData((prev) => {
@@ -126,7 +126,7 @@ function Todo() {
           <TodoList
             todoData={filteredData}
             onRemove={removeTask}
-            onStrike={strikeHandler}
+            // onStrike={strikeHandler}
             OnAddEditInput={onAddEditInputHandler}
           />
         ) : <p className={classes.para}>Add task to see list</p> }

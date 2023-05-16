@@ -1,7 +1,7 @@
 import { useState } from "react";
 import classes from "./TodoItem.module.css";
 import { useDispatch } from "react-redux";
-import { toggleComplete } from "../../store/todoSlice";
+import { toggleComplete, deleteTodo } from "../../store/todoSlice";
 
 import "../../App.css";
 
@@ -30,6 +30,9 @@ function TodoItem(props) {
       setEdit(!edit);
     }
   };
+  const deleteHandler = () => {
+    dispatch(deleteTodo({id: props.id}))
+  }
   const setInputHandler = (e) => {
     setInput(e.target.value);
   };
@@ -90,9 +93,9 @@ function TodoItem(props) {
         <i
           className="fa fa-trash-o btn"
           baria-hidden="true"
-          onClick={() => {
-            props.remove(props.id);
-          }}
+          onClick={ deleteHandler
+            // () => {props.remove(props.id);}
+          }
         ></i>
       </div>
 

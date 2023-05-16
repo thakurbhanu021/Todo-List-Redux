@@ -9,9 +9,9 @@ function TodoList(props) {
  const removeHandler=(id)=>{
   props.onRemove(id);
  }
- const strikeHandler=(val,id)=>{
-  props.onStrike(val,id);
- }
+//  const strikeHandler=(val,id)=>{
+//   props.onStrike(val,id);
+//  }
  const addInputEditHandler=(val,id)=>{
   props.OnAddEditInput(val,id);
  }
@@ -26,7 +26,7 @@ function TodoList(props) {
                 key={ListData.id}
                 // remove={() => props.remove(index)}
                remove={removeHandler}
-               strike={strikeHandler}
+              //  strike={strikeHandler}
                addInputEdit={addInputEditHandler}
               />
             ))

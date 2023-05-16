@@ -19,16 +19,23 @@ const todoSlice = createSlice({
             state.push(todo);
         },
         toggleComplete: (state,action)=> {
-           const index = state.findIndex((todo)=> todo.id === action.payload.id);
-            state[index].isCompleted = action.payload.isCompleted;
-            console.log(action.payload.isCompleted);
+        //    const index = state.findIndex((todo)=> todo.id === action.payload.id);
+        //     state[index].isCompleted = action.payload.isCompleted;
+        //     console.log(action.payload.isCompleted);
+
+        state.map((todo)=>{
+            if(todo.id === action.payload.id){
+                todo.isCompleted = action.payload.isCompleted;
+            } else return;
+        })
         },
-        deleteTodo:(action,payload)=>{
-            
-        }
+        deleteTodo:(state,action)=>{
+            console.log(action.payload.id)
+            return state.filter((todo)=> todo.id !== action.payload.id )
+        },
     }
 })
 
-export const {addTodo,toggleComplete } = todoSlice.actions;
+export const {addTodo,toggleComplete, deleteTodo } = todoSlice.actions;
 
 export default todoSlice.reducer;
