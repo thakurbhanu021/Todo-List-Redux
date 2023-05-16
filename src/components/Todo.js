@@ -21,11 +21,11 @@ function Todo() {
   ]);
 
   const addTaskData = (TaskData) => {
-    setUpdatedTaskData((prev) => {
-      const newData = [...prev];
-      newData.push(TaskData);
-      return newData;
-    });
+    // setUpdatedTaskData((prev) => {
+    //   const newData = [...prev];
+    //   newData.push(TaskData);
+    //   return newData;
+    // });
   };
 
   // const removeTask = (index) => {

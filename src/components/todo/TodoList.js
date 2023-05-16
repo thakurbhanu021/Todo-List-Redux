@@ -1,8 +1,11 @@
 import TodoItem from "./TodoItem";
 import classes from "./TodoList.module.css";
+import { useSelector } from "react-redux";
 
 
 function TodoList(props) {
+  const todoData = useSelector((state)=> state.todos);
+
  const removeHandler=(id)=>{
   props.onRemove(id);
  }
@@ -14,8 +17,7 @@ function TodoList(props) {
  }
   return (
       <ul className={classes.content}>
-        {props?.todoData?.length
-          ? props.todoData.map((ListData) => (
+        {todoData.map((ListData) => (
               <TodoItem
                 id={ListData.id}
                 des={ListData.des}
@@ -28,7 +30,7 @@ function TodoList(props) {
                addInputEdit={addInputEditHandler}
               />
             ))
-          : null}
+          }
       </ul>
     
   );

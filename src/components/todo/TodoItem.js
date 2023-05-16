@@ -1,5 +1,7 @@
 import { useState } from "react";
 import classes from "./TodoItem.module.css";
+import { useDispatch } from "react-redux";
+import { toggleComplete } from "../../store/todoSlice";
 
 import "../../App.css";
 
@@ -8,14 +10,18 @@ function TodoItem(props) {
   const [edit, setEdit] = useState(false);
   const [input, setInput] = useState("");
 
+  const dispatch = useDispatch();
+
   const strikeHandler = () => {
-    if (edit) {
-      return "none";
-    } else {
-      setStrike(!strike);
-      const val = props.isCompleted;
-      props.strike(!val, props.id);
-    }
+    // if (edit) {
+    //   return "none";
+    // } else {
+    //   setStrike(!strike);
+    //   const val = props.isCompleted;
+    //   props.strike(!val, props.id);
+    // }
+    const val = props.isCompleted;
+    dispatch(toggleComplete({id: props.id , isCompleted: !val}))
   };
   const editHandler = () => {
     if (props.isCompleted=== true) {

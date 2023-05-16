@@ -1,19 +1,24 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addTodo } from "../../store/todoSlice";
 
 import classes from "./AddTodo.module.css";
 
 function AddTodo(props) {
+  const dispatch = useDispatch();
   const [task, setTask] = useState('');
 
-  function AddTodoHandler(e) {
-    const TaskData = {
-      id: Math.floor(Math.random() * 1000 + 1),
-      des: task,
-      isCompleted: false
-    };
-    props.onAddTaskData(TaskData);
-    setTask('')
-  }
+  const AddTodoHandler = (e)=> {
+    e.preventDefault()
+    // const TaskData = {
+    //   id: Math.floor(Math.random() * 1000 + 1),
+    //   des: task,
+    //   isCompleted: false
+    // };
+    dispatch(addTodo({task: task}))
+    // props.onAddTaskData(TaskData);
+    setTask('');
+}
 
   return (
     <div className={classes.content}>
