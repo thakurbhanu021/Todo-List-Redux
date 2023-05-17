@@ -6,7 +6,7 @@ import { toggleComplete, deleteTodo , editTodo} from "../../store/todoSlice";
 import "../../App.css";
 
 function TodoItem(props) {
-  const [strike, setStrike] = useState(false);
+  // const [strike, setStrike] = useState(false);
   const [edit, setEdit] = useState(false);
   const [input, setInput] = useState("");
 
@@ -20,8 +20,13 @@ function TodoItem(props) {
     //   const val = props.isCompleted;
     //   props.strike(!val, props.id);
     // }
-    const val = props.isCompleted;
-    dispatch(toggleComplete({id: props.id , isCompleted: !val}))
+    if(edit){
+      return "none";
+    } else {
+      const val = props.isCompleted;
+      dispatch(toggleComplete({id: props.id , isCompleted: !val}))
+    }
+    
   };
   const editHandler = () => {
     if (props.isCompleted === true) {
@@ -33,9 +38,9 @@ function TodoItem(props) {
   const deleteHandler = () => {
     dispatch(deleteTodo({id: props.id}))
   }
-  const setInputHandler = (e) => {
-    setInput(e.target.value);
-  };
+  // const setInputHandler = (e) => {
+  //   setInput(e.target.value);
+  // };
   const submitInputHandler = () => {
     if (input.trim().length === 0) {
       return alert("Please type something to edit the task");
@@ -57,7 +62,7 @@ function TodoItem(props) {
         placeholder={props.des}
         className={classes.input}
         value={input}
-        onChange={setInputHandler}
+        onChange={(e)=> setInput(e.target.value)}
       />
       <i
         className="fa fa-check-circle-o fa-lg"

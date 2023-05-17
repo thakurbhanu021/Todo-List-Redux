@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 
 function TodoList(props) {
-  const todoData = useSelector((state)=> state.todos);
+  // const todoData = useSelector((state)=> state.todos);
 
 //  const removeHandler=(id)=>{
 //   props.onRemove(id);
@@ -12,12 +12,12 @@ function TodoList(props) {
 //  const strikeHandler=(val,id)=>{
 //   props.onStrike(val,id);
 //  }
- const addInputEditHandler=(val,id)=>{
-  props.OnAddEditInput(val,id);
- }
+//  const addInputEditHandler=(val,id)=>{
+//   props.OnAddEditInput(val,id);
+//  }
   return (
       <ul className={classes.content}>
-        {todoData.map((ListData) => (
+        {props.todoData.map((ListData) => (
               <TodoItem
                 id={ListData.id}
                 des={ListData.des}
@@ -27,7 +27,7 @@ function TodoList(props) {
                 // remove={() => props.remove(index)}
               //  remove={removeHandler}
               //  strike={strikeHandler}
-               addInputEdit={addInputEditHandler}
+              //  addInputEdit={addInputEditHandler}
               />
             ))
           }

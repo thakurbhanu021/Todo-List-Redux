@@ -1,4 +1,8 @@
 import { useState } from "react";
+import { useDispatch , useSelector} from "react-redux";
+// import { filterTodoDataCompleted, filterTodoDataPending } from "../store/todoSlice";
+
+
 
 import AddTodo from "./todo/AddTodo";
 import TodoList from "./todo/TodoList";
@@ -6,27 +10,29 @@ import classes from "./Todo.module.css";
 import Card from "./ui/Card";
 
 function Todo() {
+  // const dispatch = useDispatch();
+  const todos = useSelector(state=>state.todos);
   // filter add all , pending , completed
   // strikethrough .... done!!!
   // edit done
 
   const [isCompleted, setisCompleted] = useState("");
 
-  const [updatedTaskData, setUpdatedTaskData] = useState([
-    { id: 1, des: "this is my first Task", isCompleted: false },
-    { id: 2, des: "this is my second Task", isCompleted: false },
-    { id: 3, des: "this is my third Task", isCompleted: false },
-    { id: 4, des: "this is my fourth Task", isCompleted: false },
-    { id: 5, des: "this is my fifth Task", isCompleted: false },
-  ]);
+  // const [updatedTaskData, setUpdatedTaskData] = useState([
+  //   { id: 1, des: "this is my first Task", isCompleted: false },
+  //   { id: 2, des: "this is my second Task", isCompleted: false },
+  //   { id: 3, des: "this is my third Task", isCompleted: false },
+  //   { id: 4, des: "this is my fourth Task", isCompleted: false },
+  //   { id: 5, des: "this is my fifth Task", isCompleted: false },
+  // ]);
 
-  const addTaskData = (TaskData) => {
-    // setUpdatedTaskData((prev) => {
-    //   const newData = [...prev];
-    //   newData.push(TaskData);
-    //   return newData;
-    // });
-  };
+  // const addTaskData = (TaskData) => {
+  //   // setUpdatedTaskData((prev) => {
+  //   //   const newData = [...prev];
+  //   //   newData.push(TaskData);
+  //   //   return newData;
+  //   // });
+  // };
 
   // const removeTask = (index) => {
   // setUpdatedTaskData(prev => {
@@ -34,6 +40,7 @@ function Todo() {
   //   newData.splice(index, 1);
   //   return newData
   // })
+
   // const removeTask = (id) => {
   //   setUpdatedTaskData((prev) => prev.filter((data) => data.id !== id));
   // };
@@ -54,20 +61,21 @@ function Todo() {
   //     return newData;
   //   });
   // };
-  const onAddEditInputHandler = (val, id) => {
-    // console.log(val, id);
-    setUpdatedTaskData((prev) => {
-      const newData = [...prev];
-      newData.map((item) => {
-        if (item.id === id) {
-          return (item.des = val);
-        } else {
-          return item;
-        }
-      });
-      return newData;
-    });
-  };
+
+  // const onAddEditInputHandler = (val, id) => {
+  //   // console.log(val, id);
+  //   setUpdatedTaskData((prev) => {
+  //     const newData = [...prev];
+  //     newData.map((item) => {
+  //       if (item.id === id) {
+  //         return (item.des = val);
+  //       } else {
+  //         return item;
+  //       }
+  //     });
+  //     return newData;
+  //   });
+  // };
 
   const completedHandler = () => {
     // const data = [...updatedTaskData];
@@ -75,7 +83,10 @@ function Todo() {
     //   return item.isCompleted === !isCompleted;
     // });
     // setUpdatedTaskData(completedTask);
+
     setisCompleted("completed");
+
+    // dispatch(filterTodoDataCompleted({filterComplete: 'completed'}))
   };
 
   const pendingHandler = () => {
@@ -84,18 +95,23 @@ function Todo() {
     //   return item.isCompleted === isCompleted;
     // });
     // setUpdatedTaskData(pendingTask);
+
     setisCompleted("pending");
+
+    // dispatch(filterTodoDataPending({filterComplete: 'pending'}))
   };
   const allTaskHandler = () => {
     setisCompleted("all");
+
+    // dispatch(filterTodoData({filterComplete: 'all'}))
   };
 
   const filteredTaskHandler = () => {
     if (isCompleted === "completed")
-      return updatedTaskData.filter((item) => item.isCompleted === true);
+      return todos.filter((item) => item.isCompleted === true);
     if (isCompleted === "pending")
-      return updatedTaskData.filter((item) => item.isCompleted === false);
-    return updatedTaskData;
+      return todos.filter((item) => item.isCompleted === false);
+    return todos;
   };
 
   const filteredData = filteredTaskHandler();
@@ -127,11 +143,13 @@ function Todo() {
             todoData={filteredData}
             // onRemove={removeTask}
             // onStrike={strikeHandler}
-            OnAddEditInput={onAddEditInputHandler}
-          />
-        ) : <p className={classes.para}>Add task to see list</p> }
+            // OnAddEditInput={onAddEditInputHandler}
+          />)
+         : <p className={classes.para}>Add task to see list</p> } 
       </Card>
-      <AddTodo onAddTaskData={addTaskData} />
+      <AddTodo 
+      // onAddTaskData={addTaskData} 
+      />
     </section>
   );
 }

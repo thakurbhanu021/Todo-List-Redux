@@ -41,10 +41,27 @@ const todoSlice = createSlice({
                     todo.des = action.payload.des;
                 }
             })
-        }
-    }
+        },
+    //     filterTodoDataCompleted: (state,action)=> {
+    //         // const filteredtodos = [...state];
+    //         if(action.payload.filterComplete === 'completed'){
+    //             const newarr = state.filter((todo)=> todo.isCompleted === true)
+    //             return newarr
+    //         }
+    //         //  else if (action.payload.filterComplete === 'pending'){
+    //         //     return filteredtodos.filter((todo)=>todo.isCompleted === false)
+    //         // } else return filteredtodos;
+    //     },
+    //     filterTodoDataPending: (state,action)=> {
+    //         // const filteredtodos = [...state];
+    //         if (action.payload.filterComplete === 'pending'){
+    //             const newarr = state.filter((todo)=>todo.isCompleted === false)
+    //             return newarr;
+    //     }
+    // }
+}
 })
 
-export const {addTodo,toggleComplete, deleteTodo, editTodo } = todoSlice.actions;
+export const {addTodo,toggleComplete, deleteTodo, editTodo , filterTodoDataCompleted, filterTodoDataPending} = todoSlice.actions;
 
 export default todoSlice.reducer;
