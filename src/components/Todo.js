@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch , useSelector} from "react-redux";
-// import { filterTodoDataCompleted, filterTodoDataPending } from "../store/todoSlice";
+import { filterTodoDataCompleted, filterTodoDataPending } from "../store/todoSlice";
 
 
 
@@ -98,7 +98,7 @@ function Todo() {
 
     setisCompleted("pending");
 
-    // dispatch(filterTodoDataPending({filterComplete: 'pending'}))
+    // dispatch(filterTodoDataCompleted({filterComplete: 'pending'}))
   };
   const allTaskHandler = () => {
     setisCompleted("all");
@@ -144,8 +144,8 @@ function Todo() {
             // onRemove={removeTask}
             // onStrike={strikeHandler}
             // OnAddEditInput={onAddEditInputHandler}
-          />)
-         : <p className={classes.para}>Add task to see list</p> } 
+          />
+           ): <p className={classes.para}>Add task to see list</p> }  
       </Card>
       <AddTodo 
       // onAddTaskData={addTaskData} 

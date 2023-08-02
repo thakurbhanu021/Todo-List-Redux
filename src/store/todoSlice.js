@@ -39,26 +39,27 @@ const todoSlice = createSlice({
             state.map((todo)=>{
                 if(todo.id === action.payload.id){
                     todo.des = action.payload.des;
-                }
+                } 
             })
         },
     //     filterTodoDataCompleted: (state,action)=> {
-    //         // const filteredtodos = [...state];
+    //         const filteredtodos = [...state];
     //         if(action.payload.filterComplete === 'completed'){
-    //             const newarr = state.filter((todo)=> todo.isCompleted === true)
+    //             const newarr = filteredtodos.filter((todo)=> todo.isCompleted === true)
     //             return newarr
     //         }
-    //         //  else if (action.payload.filterComplete === 'pending'){
-    //         //     return filteredtodos.filter((todo)=>todo.isCompleted === false)
-    //         // } else return filteredtodos;
+    //          else if (action.payload.filterComplete === 'pending'){
+    //             const newarr = filteredtodos.filter((todo)=> todo.isCompleted === false)
+    //             return newarr
+    //         } else return filteredtodos;
     //     },
-    //     filterTodoDataPending: (state,action)=> {
-    //         // const filteredtodos = [...state];
-    //         if (action.payload.filterComplete === 'pending'){
-    //             const newarr = state.filter((todo)=>todo.isCompleted === false)
-    //             return newarr;
-    //     }
-    // }
+    // //     filterTodoDataPending: (state,action)=> {
+    // //         const filteredtodos = [...state];
+    // //         if (action.payload.filterComplete === 'pending'){
+    // //             const newarr = filteredtodos.filter((todo)=>todo.isCompleted === false)
+    // //             return newarr;
+    // //     }
+    // // }
 }
 })
 
